@@ -1,9 +1,9 @@
-import User from "../models/Usermodel.js";
+import catat from "../models/Usermodel.js";
 
 // GET
-async function getUsers(req, res) {
+async function getcatat(req, res) {
   try {
-    const response = await User.findAll();
+    const response = await catat.findAll();
     res.status(200).json(response);
   } catch (error) {
     console.log(error.message);
@@ -11,36 +11,36 @@ async function getUsers(req, res) {
 }
 
 // CREATE
-async function createUser(req, res) {
+async function createcatat(req, res) {
   try {
     const inputResult = req.body;
-    await User.create(inputResult);
+    await catat.create(inputResult);
     res.status(201).json({ msg: "User Created" });
   } catch (error) {
     console.log(error.message);
   }
 }
 
-export { getUsers, createUser };
+export { getcatat, createcatat };
 
-export const updateUser = async(req, res)=> {
+export const updatecatat = async(req, res)=> {
   try {
-    const inputUser = req.body;
+    const inputcatat = req.body;
 
-    await User.update(inputUser, {
+    await catat.update(inputcatat, {
       where : { 
         id: req.params.id }
     });
-    res.status(200).json({ msg: "User Updated" });
+    res.status(200).json({ msg: "catat Updated" });
 
 } catch (error) {
   console.log(error.message);
 }
 }
 
-export const deleteUser = async (req,res)=>{
+export const deletecatat = async (req,res)=>{
   try {
-    await User.destroy({
+    await catat.destroy({
       where:{
         id : req.params.id
       }

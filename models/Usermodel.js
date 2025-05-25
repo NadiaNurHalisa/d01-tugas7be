@@ -1,16 +1,16 @@
 import { Sequelize } from "sequelize";
-import db from "../databases/Databases.js";   // bukan dari `config`, tapi dari `databases`
+import db from "../databases/Databases.js";
 
-// Membuat tabel "user"
-const User = db.define(
-  "user", // Nama Tabel
+const catat = db.define(
+  "catat",
   {
     Judul: Sequelize.STRING,
     Note: Sequelize.STRING,
     Pembuat: Sequelize.STRING,
+  },
+  {
+    freezeTableName: true  // ✅ Mencegah Sequelize mengubah jadi "catats"
   }
 );
 
-db.sync().then(() => console.log("Database synced"));
-
-export default User;
+export default catat;
